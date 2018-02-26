@@ -13,7 +13,7 @@ namespace FILE_IO
 {
     public partial class Form1 : Form
     {
-        Stream currStream = null;
+        //Stream currStream = null;
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +29,11 @@ namespace FILE_IO
             FilleToTrack.GetFilePath();
             FilleToTrack.GetTextFileText(FilleToTrack.Path);
         }
-
+        /// <summary>
+        ///  Encrypts the file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
             if (FilleToTrack.Path != null)
@@ -46,6 +50,7 @@ namespace FILE_IO
                 }
                 writer.Close();
                 FilleToTrack.GetTextFileText(FilleToTrack.Path);
+                MessageBox.Show("Success!");
             }
             else
             {
@@ -66,6 +71,8 @@ namespace FILE_IO
                         writer.WriteLine(currLine);
                 }
                 writer.Close();
+                FilleToTrack.GetTextFileText(FilleToTrack.Path);
+                MessageBox.Show("Success!");
             }
             else
             {
@@ -75,10 +82,9 @@ namespace FILE_IO
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            FilleToTrack.CopyFile(txtFileName.Text);
 
-            FilleToTrack.GetTextFileText(FilleToTrack.Path);
-            
-            
+
         }
     }
 }
